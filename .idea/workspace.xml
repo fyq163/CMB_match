@@ -96,7 +96,7 @@
       <workItem from="1682165823911" duration="378000" />
       <workItem from="1682166447943" duration="865000" />
       <workItem from="1682167318326" duration="155000" />
-      <workItem from="1682167475676" duration="584000" />
+      <workItem from="1682167475676" duration="682000" />
     </task>
     <task id="LOCAL-00001" summary="optimize structure">
       <created>1682164865319</created>
@@ -140,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682167704447</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="optimize structure">
+      <created>1682168064880</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682168064880</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,7 +166,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/v1" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -172,6 +179,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="add comments" />
     <MESSAGE value="optimize structure" />
     <option name="LAST_COMMIT_MESSAGE" value="optimize structure" />
   </component>
