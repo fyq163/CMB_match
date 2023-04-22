@@ -96,7 +96,7 @@
       <workItem from="1682165823911" duration="378000" />
       <workItem from="1682166447943" duration="865000" />
       <workItem from="1682167318326" duration="155000" />
-      <workItem from="1682167475676" duration="682000" />
+      <workItem from="1682167475676" duration="1022000" />
     </task>
     <task id="LOCAL-00001" summary="optimize structure">
       <created>1682164865319</created>
@@ -147,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682168064880</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="optimize structure">
+      <created>1682168175318</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682168175318</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,6 +180,21 @@
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
