@@ -99,6 +99,7 @@ def save_n_drop(corr_cols, df: pd.DataFrame):
     """
     # from big df get the number of NaN of each column
     rank_df = pd.DataFrame(df.loc[:, corr_cols].isna().sum())
+    # rank_df---> index:column name, value: number of missing value
     # for each abbreviation we keep 1, we assume it is the same thing
     rank_df.loc[:, 'abbreviation'] = rank_df.index.map(lambda x: x[0:3])
     # for each group of abbreviation, we keep only the fullest data set
