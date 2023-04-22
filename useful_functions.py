@@ -2,6 +2,16 @@ import pandas as pd
 
 
 def dynamic_string_col(df, param_string_col=None):
+    """
+     Get list of string columns that are used to build dynamic data. This is a helper function for : func : ` ~pyspark. sql. query. get_or_create_sql `
+     
+     @param df - pandas. DataFrame Data frame to search
+     @param param_string_col - list of strings to include in result
+     
+     @return list of string columns to be used in SQL query
+    """
+
+    # param_string_col is None if not set.
     if param_string_col is None:
         param_string_col = ['MON_12_CUST_CNT_PTY_ID',
                             'AI_STAR_SCO',
@@ -56,8 +66,6 @@ def get_numerical_df(df: pd.DataFrame, drop_col=None):
     """
     if drop_col is None:
         drop_col = ['CUST_UID', 'LABEL']
-    else:
-        drop_col = drop_col
     _string_col = dynamic_string_col(df)
     _df_numerical = df.drop(_string_col, axis=1).drop(drop_col, axis=1).astype(float)
     return _df_numerical
@@ -103,5 +111,6 @@ def save_n_drop(corr_cols, df: pd.DataFrame):
 #     else:
 #         raise ValueError('There is no label!')
 if __name__ == '__main__':
-    df_train = pd.read_csv('filled_trian.csv', index_col=0).head(100)
+    df_train = pd.read_csv('data/2022/train.csv', index_col=0).head(100)
     string_col = dynamic_string_col(df_train)
+    print(string_col)
