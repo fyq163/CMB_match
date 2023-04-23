@@ -1,5 +1,5 @@
 {
     "docify.commentService.programmingLanguage": "auto-detect",
-    "docify.commentService.docstringFormat": "XML",
+    "docify.commentService.docstringFormat": "Google",
     "python.analysis.typeCheckingMode": "basic"
 }
