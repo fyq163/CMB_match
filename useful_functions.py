@@ -1,4 +1,5 @@
 import itertools
+import random
 import pandas as pd
 import numpy as np
 
@@ -154,6 +155,15 @@ def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr, threshold=0.8):
     # get the cols we want to save
     # drop the rest
     # df.nlargest()
+
+    # check match,
+    # random select from range first few row,col
+    # see if the value math
+    def random_check_order(new, old):
+        row_i = random.randnint(20, 100)
+        col_i = random.randint(2, 5)
+        #--->TF array
+        # T/F array.any()
 
 
 if __name__ == '__main__':

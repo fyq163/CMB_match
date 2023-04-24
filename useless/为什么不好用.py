@@ -49,10 +49,6 @@ def drop_high_columns(df_raw: pd.DataFrame, to_calc_corr ,threshold=0.8):
 
 
 if __name__ == '__main__':
-    import os
-    path = '../data/train.csv'
-    print(
-        os.path.dirname(os.path.dirname(__file__)+'/data/train.csv')
           )
     # '/data/train.csv'
     # print(file_path)
