@@ -1,0 +1,40 @@
+Index: useful_functions.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/useful_functions.py b/useless/useful_functions.py
+rename from useful_functions.py
+rename to useless/useful_functions.py
+--- a/useful_functions.py	(revision 4b03d94d5e2dc80da3b2aa7c0e49a0f81fc944d4)
++++ b/useless/useful_functions.py	
+@@ -242,8 +242,8 @@
+     return df    
+ 
+ if __name__ == '__main__':
+-    path_fill = 'data/2022/filled_trian.csv'
+-    df_train = pd.read_csv('data/2022/train.csv', index_col=0).head(500)
++    path_fill = '../data/2022/filled_trian.csv'
++    df_train = pd.read_csv('../data/2022/train.csv', index_col=0).head(500)
+     df_train_filled = pd.read_csv(path_fill, index_col=0).head(500)
+     # upper lower limits should there be at the first place
+ 
+Index: useless/为什么不好用.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#%%\nimport pandas as pd\nimport numpy as np\n\nimport useful_functions as uf\n\n\ndef drop_high_columns(df_raw: pd.DataFrame, to_calc_corr ,threshold=0.8):\n    \"\"\"\n    :return \n    :param df_raw: to stat the number of NaN values\n    :param threshold: threshold to distinguish what is left what to be droed\n    :rtype: \n    \"\"\"\n    corr_matrix = to_calc_corr.corr()\n    rows,cols = np.where(corr_matrix>0.8)\n    get_rid_2=list()\n    unique_set = set()\n    for i in range(len(rows)):\n        posi= corr_matrix.iloc[rows[i],cols[i]]\n    # rows[i],cols[i] is the position of the element in the matrix\n    # posi is the correlation value of rows[i] and cols[i]\n        if posi<0.9990: # type: ignore\n            col_set = {corr_matrix.index[rows[i]], corr_matrix.columns[cols[i]]}\n            # this is the actual column name\n            if col_set not in get_rid_2: \n                # because the set disregard the order,\n                # so we need to check if the set is already in the list,\n                # the pair with the same two elements\n                # but different order will be regarded as same set,\n                get_rid_2.append(col_set) #----> a list of set\n                unique_set.add(frozenset(col_set)) #----> a set of set\n    drop_col_2 = list(set([item for s in get_rid_2 for item in list(s)]))\n    # drop_col_2  = list(itertools.chain(*get_rid_2))\n    rank_df = df_raw.loc[:, drop_col_2].isna().sum()\n\n    #---> index:column name, value: number of missing value\n    # rank_df.sort_values(0, ascending=True)\n\n    for i in range(len(get_rid_2)):# loop in length of the four element list\n        ind = get_rid_2[i]\n        for col_j in ind: # col_j is the column name\n            rank_df.loc[col_j,'pair']=i # add a column of pair mark to rank_df\n            rank_df.loc[col_j,'col_name']=col_j # add a column of column name to rank_df\n            rank_df.loc[col_j, 'abbreviation']=col_j[0:3]\n    # ndarray=rank_df.groupby('pair')[0].nlargest(1)\n    return rank_df.sort_values('pair')\n#%%\n\n\nif __name__ == '__main__':\n          )\n    # '/data/train.csv'\n    # print(file_path)\n    # print(pd.read_csv(file_path).head())
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/useless/为什么不好用.py b/useless/为什么不好用.py
+--- a/useless/为什么不好用.py	(revision 4b03d94d5e2dc80da3b2aa7c0e49a0f81fc944d4)
++++ b/useless/为什么不好用.py	(date 1682343169763)
+@@ -2,8 +2,6 @@
+ import pandas as pd
+ import numpy as np
+ 
+-import useful_functions as uf
+-
+ 
+ def drop_high_columns(df_raw: pd.DataFrame, to_calc_corr ,threshold=0.8):
+     """
