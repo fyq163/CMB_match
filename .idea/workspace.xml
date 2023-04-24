@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed224588-037c-4601-b25d-f696e04bc75b" name="变更" comment="fresh new start" />
+    <list default="true" id="ed224588-037c-4601-b25d-f696e04bc75b" name="变更" comment="fresh new start">
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/fingerprint.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/keras_metadata.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/saved_model.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/variables/variables.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/variables/variables.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_pipeline" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/oracle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/checkpoint" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/checkpoint.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/checkpoint.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/pipeline" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/trial.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/checkpoint" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/checkpoint.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/checkpoint.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/pipeline" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/trial.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/checkpoint" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/checkpoint.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/checkpoint.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/pipeline" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/trial.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structured_data_classifier/tuner0.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stage3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/stage3.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/useful_functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/useful_functions/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +78,7 @@
       <recent name="$PROJECT_DIR$/useless" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.useful_functions">
+  <component name="RunManager" selected="Python.__init__">
     <configuration name="为什么不好用" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CMB_match" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -67,6 +95,28 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/useless/为什么不好用.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CMB_match" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/useful_functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/useful_functions/__init__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -119,11 +169,13 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.__init__" />
       <item itemvalue="Python.为什么不好用" />
       <item itemvalue="Python.useful_functions" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.__init__" />
         <item itemvalue="Python.useful_functions" />
         <item itemvalue="Python.为什么不好用" />
       </list>
@@ -147,6 +199,7 @@
       <workItem from="1682300241260" duration="3286000" />
       <workItem from="1682306374101" duration="3754000" />
       <workItem from="1682342724132" duration="467000" />
+      <workItem from="1682472133488" duration="12642000" />
     </task>
     <task id="LOCAL-00001" summary="optimize structure">
       <created>1682164865319</created>
@@ -281,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682342897731</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fresh new start">
+      <created>1682344004616</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1682344004616</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -336,5 +396,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CMB_match$useful_functions.coverage" NAME="useful_functions 覆盖结果" MODIFIED="1682303851384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CMB_match$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1682484492665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/useful_functions" />
   </component>
 </project>

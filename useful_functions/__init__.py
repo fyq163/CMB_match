@@ -71,17 +71,28 @@ def step1_data_processing(df: pd.DataFrame, _string_col):
     return pd.concat(objs=[df.iloc[:, :2], _df_numerical, df_str], axis=1), _string_col
 
 
-def get_numerical_df(df: pd.DataFrame, drop_col=None):
+def get_numerical_df(df: pd.DataFrame, _drop_col=None):
     """
     Takes df and then return all numerical data in Dataframe
-    :return df_numerical
+
+
+
+    Returns
+    -------
+    pd.DataFrame
+
+    :return df_numerical: dataframe with all numerical data
     """
-    if drop_col is None:
-        drop_col = ['CUST_UID', 'LABEL']
+
+    if _drop_col is None:
+        _drop_col = ['CUST_UID', 'LABEL']
     _string_col = dynamic_string_col(df)
-    _df_numerical = df.drop(_string_col, axis=1).drop(
-        drop_col, axis=1).astype(float)
-    return _df_numerical
+    _df_numerical = df.drop(_string_col, axis=1)
+    if any(_df_numerical.columns.isin(['CUST_UID', 'LABEL'])):
+        return _df_numerical.drop(
+            _drop_col, axis=1).astype(float)
+    else:
+        return _df_numerical
 
 
 def create_dummies(df_raw, binary_col=['MON_12_CUST_CNT_PTY_ID']) -> pd.DataFrame:
@@ -246,8 +257,9 @@ def IQR_filtering(df, U=0.88, L=0.22):
 
 
 if __name__ == '__main__':
-    path_fill = 'data/2022/filled_trian.csv'
-    df_train = pd.read_csv('data/2022/train.csv', index_col=0).head(500)
+
+    path_fill = '../data/2022/filled_trian.csv'
+    df_train = pd.read_csv('../data/2022/train.csv', index_col=0).head(500)
     df_train_filled = pd.read_csv(path_fill, index_col=0).head(500)
     # upper lower limits should there be at the first place
 
@@ -256,3 +268,9 @@ if __name__ == '__main__':
     x_sample_500 = create_dummies(df_train_filled).drop(['CUST_UID', 'LABEL'], axis=1)
     drop_col: list = drop_high_corr_columns(df_train, x_sample_500)
     x_sample_500.drop(drop_col, axis=1, inplace=True)
+
+    test = df_train_filled[['COUNTER_CUR_YEAR_CNT_AMT',
+                            'CUR_YEAR_COUNTER_ENCASH_CNT',
+                            'HLD_FGN_CCY_ACT_NBR']]
+    # print(get_numerical_df(test))
+    print(test.sum())
