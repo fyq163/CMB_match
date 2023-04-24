@@ -193,10 +193,45 @@ def random_check_order(new: pd.DataFrame, old: pd.DataFrame):
         # any() only check if there is true in the array, so reverse the boolean
         res_list.append(n_value != o_value)
     if not any(res_list):  # any abnormal?
+        # --->TF array
+        # T/F array.any()
         return 'great, no difference'
-    # --->TF array
-    # T/F array.any()
+    
+def IQR_filtering(df,U=0.88,L=0.22):
+    """
+    Optional
+    ----------
+    This function filters outliers using IQR method.
 
+    Parameters
+    ----------
+    df : pd.Dataframe,
+        This dataframe should be numerial only, if there is a string column, it will crash
+
+    U : default is 0.88
+        percentile of the upper bound, default is 0.88
+
+    L : default is 0.22
+        percentile of the lower bound, default is 0.22
+
+    """
+
+    for col in df.columns:
+        Q1=df.loc[:,col].quantile(L)
+        Q3=df.loc[:,col].quantile(U)
+        IQR = Q3 - Q1
+        lower = Q1-1.5*IQR
+        upper = Q3+1.5*IQR
+        con_cahnge = (df[col]<lower) | (df[col]>upper)
+        def change(x):
+            if x<lower:
+                return lower
+            elif x>upper:
+                return upper
+            else:
+                return x
+        df.loc[con_cahnge,col] = df.loc[con_cahnge,col].apply(change)
+    return df    
 
 if __name__ == '__main__':
     path_fill = 'data/2022/filled_trian.csv'
