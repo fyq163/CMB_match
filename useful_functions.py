@@ -85,6 +85,9 @@ def get_numerical_df(df: pd.DataFrame, drop_col=None):
 
 
 def create_dummies(df_raw, binary_col=['MON_12_CUST_CNT_PTY_ID']) -> pd.DataFrame:
+    """
+    :df_raw : df with numerical cols and str cols 
+    """
     binary_col = list(binary_col)
     string_col = dynamic_string_col(df_raw)
     opt_col = string_col.copy()
