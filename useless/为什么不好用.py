@@ -49,31 +49,11 @@ def drop_high_columns(df_raw: pd.DataFrame, to_calc_corr ,threshold=0.8):
 
 
 if __name__ == '__main__':
-    path_fill = '/workspaces/CMB_match/data/2022/filled_trian.csv'
-    df_train = pd.read_csv('data/2022/train.csv', index_col=0).head(500)
-    df_train_filled = pd.read_csv(path_fill, index_col=0).head(500)
-    df_train_filled.loc[:,'SHH_BCK']=df_train_filled.SHH_BCK.astype(str) # it was floated
-    string_col =uf.dynamic_string_col(df_train_filled)
-
-    opt_col = string_col.copy()
-
-    df_str=pd.DataFrame()
-    if 'MON_12_CUST_CNT_PTY_ID' in string_col:
-        # This a Binary Y/N, the training sample has Y only, do not fill with the mode
-        opt_col.remove('MON_12_CUST_CNT_PTY_ID')
-        df_str.loc[:,'MON_12_CUST_CNT_PTY_ID'] = df_train_filled['MON_12_CUST_CNT_PTY_ID']
-        # Direct copy
-    # fill the missing value with mode
-    df_str.loc[:,opt_col] = uf.mode_nan_string(df_train_filled.loc[:, opt_col])
-    ## One-hot encoding
-    
-    dummies = pd.get_dummies(df_str,dummy_na=True).astype(int)
-    #%% df numerical +df str + first two columns
-    df_numercial = uf.get_numerical_df(df_train_filled)
-    res = pd.concat([df_train_filled.iloc[:,:2], dummies, df_numercial],axis=1)
-    print(res)
-    #%% dfstr + others
-    dropcol = df_str.columns
-    df_train_filled.drop(dropcol, axis=1, inplace=True)
-    df_train_filled = pd.concat([df_train_filled, dummies], axis=1)
-    print(df_train_filled)
+    import os
+    path = '../data/train.csv'
+    print(
+        os.path.dirname(os.path.dirname(__file__)+'/data/train.csv')
+          )
+    # '/data/train.csv'
+    # print(file_path)
+    # print(pd.read_csv(file_path).head())

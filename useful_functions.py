@@ -75,7 +75,7 @@ def get_numerical_df(df: pd.DataFrame, drop_col=None):
 
 
 def creat_dummies(df_raw, binary_col=['MON_12_CUST_CNT_PTY_ID']) -> pd.DataFrame:
-    binary_col=list(binary_col)
+    binary_col = list(binary_col)
     string_col = dynamic_string_col(df_raw)
     opt_col = string_col.copy()
     df_str = pd.DataFrame()
@@ -83,7 +83,7 @@ def creat_dummies(df_raw, binary_col=['MON_12_CUST_CNT_PTY_ID']) -> pd.DataFrame
         if i in string_col:
             # This a Binary Y/N, the training sample has Y only, do not fill with the mode
             opt_col.remove(i)
-            df_str.loc[:, i] = df_raw.loc[:,i]
+            df_str.loc[:, i] = df_raw.loc[:, i]
         # Direct copy
     # fill the missing value with mode
     df_str.loc[:, opt_col] = mode_nan_string(df_raw.loc[:, opt_col])
@@ -106,8 +106,8 @@ def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr, threshold=0.8):
     get_rid_2 = list()
     for i, row in enumerate(rows):
         posi = corr_matrix.iloc[row, cols[i]]
-    # rows[i],cols[i] is the position of the element in the matrix
-    # posi is the correlation value of rows[i] and cols[i]
+        # rows[i],cols[i] is the position of the element in the matrix
+        # posi is the correlation value of rows[i] and cols[i]
         if posi < 0.9990:  # type: ignore
             col_set = {corr_matrix.index[rows[i]],
                        corr_matrix.columns[cols[i]]}
@@ -135,10 +135,10 @@ def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr, threshold=0.8):
     # DONT DELETE, USE TO QUERY
     # print(rank_df.loc[rank_df.loc[:,'pair']=='1'])
     abb = rank_df.sort_values(['number of NaN', 'pair'],
-                              ascending=[True, False])\
+                              ascending=[True, False]) \
         .groupby(
-        'abbreviation')\
-        .min()\
+        'abbreviation') \
+        .min() \
         .groupby('pair').min()
 
     #                             try :
@@ -154,14 +154,15 @@ def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr, threshold=0.8):
     # get the cols we want to save
     # drop the rest
     # df.nlargest()
+
+
 if __name__ == '__main__':
-    path_fill = '/workspaces/CMB_match/data/2022/filled_trian.csv'
+    path_fill = 'data/2022/filled_trian.csv'
     df_train = pd.read_csv('data/2022/train.csv', index_col=0).head(500)
     df_train_filled = pd.read_csv(path_fill, index_col=0).head(500)
-    
 
     # drop corr FIRST of fill mode&OneHot FIRST?
 
-    x_sample_500 = creat_dummies(df_train_filled).drop(['CUST_UID', 'LABEL'],axis=1)
-    drop_col=drop_high_corr_columns(df_train, x_sample_500)
+    x_sample_500 = creat_dummies(df_train_filled).drop(['CUST_UID', 'LABEL'], axis=1)
+    drop_col = drop_high_corr_columns(df_train, x_sample_500)
     x_sample_500.drop(drop_col, axis=1, inplace=True)
