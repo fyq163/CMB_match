@@ -160,8 +160,10 @@ def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr, threshold=0.8):
     # random select from range first few row,col
     # see if the value math
     def random_check_order(new, old):
+        # random cordinate to get a row_n, col_name
         row_i = random.randnint(20, 100)
         col_i = random.randint(2, 5)
+
         #--->TF array
         # T/F array.any()
 
