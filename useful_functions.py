@@ -28,18 +28,6 @@ def dynamic_string_col(df, param_string_col=None):
     _string_col = list(set(df.columns) & set(param_string_col))
     return _string_col
 
-
-def mode_nan_string(mode_df):
-    the_mode = mode_df.mode()
-    for col in mode_df:  # the mode of that column
-        mode_df.loc[:, col].fillna(the_mode.loc[0, col], inplace=True)
-    return mode_df
-
-
-def random_forest_nan(df):
-    return df
-
-
 def drop_too_few_variable(dataframe: pd.DataFrame, threshold=0.75, keep_stringcol=True):
     mask_drop = (dataframe.count() / 40000) > threshold
     if keep_stringcol:
@@ -49,12 +37,29 @@ def drop_too_few_variable(dataframe: pd.DataFrame, threshold=0.75, keep_stringco
         dataframe = dataframe.loc[:, mask_drop]
 
 
+def mode_nan_string(mode_df):
+    the_mode = mode_df.mode()
+    for col in mode_df:  # the mode of that column
+        mode_df.loc[:, col].fillna(the_mode.loc[0, col], inplace=True)
+    return mode_df
+
+
+def random_forest_nan(df):
+    pass
+
+
+
 def step1_data_processing(df: pd.DataFrame, _string_col):
     """
+    
     minus 2 for numerical columns and 'SHH_BCK' column, then separate label dataframe
+
     :param _string_col: none numerical columns
+
     :param df : dataframe to be processed
+
     :returns _string_col: dataframe after step 1 processing , a pure label
+ 
     """
     # slip 2 numerical and string columns
     _string_col = list(set(df.columns) & set(_string_col))
