@@ -4,35 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed224588-037c-4601-b25d-f696e04bc75b" name="变更" comment="fresh new start">
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/fingerprint.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/keras_metadata.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/saved_model.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/variables/variables.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_model/variables/variables.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/best_pipeline" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/graph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/oracle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/checkpoint.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/checkpoint.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/pipeline" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_0/trial.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/checkpoint.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/checkpoint.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/pipeline" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_1/trial.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/checkpoint.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/checkpoint.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/pipeline" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/trial_2/trial.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structured_data_classifier/tuner0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stage3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/stage3.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/useful_functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/useful_functions/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="ed224588-037c-4601-b25d-f696e04bc75b" name="变更" comment="fresh new start" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,7 +171,7 @@
       <workItem from="1682300241260" duration="3286000" />
       <workItem from="1682306374101" duration="3754000" />
       <workItem from="1682342724132" duration="467000" />
-      <workItem from="1682472133488" duration="12642000" />
+      <workItem from="1682472133488" duration="13041000" />
     </task>
     <task id="LOCAL-00001" summary="optimize structure">
       <created>1682164865319</created>
@@ -341,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682344004616</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fresh new start">
+      <created>1682488991478</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1682488991478</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
