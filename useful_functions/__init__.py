@@ -134,7 +134,7 @@ def create_dummies(df_raw, binary_col=['MON_12_CUST_CNT_PTY_ID']) -> pd.DataFram
     return pd.concat([df_raw, dummies], axis=1)
 
 
-def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr: pd.DataFrame, threshold: object = 0.999) -> list:
+def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr: pd.DataFrame, threshold: float = 0.999) -> list:
     """
     Get corr matrix from to_calc_corr, which is a dataframe without any string value,
     Then filter by number of NaN in df_raw, save the minium then compare between paris
@@ -153,7 +153,7 @@ def drop_high_corr_columns(df_raw: pd.DataFrame, to_calc_corr: pd.DataFrame, thr
         position = corr_matrix.iloc[row, cols[i]]
         # rows[i],cols[i] is the position of the element in the matrix
         # posi is the correlation value of rows[i] and cols[i]
-        if position < threshold:  # if the correlation value is less than threshold
+        if position < threshold:  # if the correlation value is less than threshold # type: ignore
             col_set = {corr_matrix.index[rows[i]],
                        corr_matrix.columns[cols[i]]}
             # this is the actual column name
