@@ -7,6 +7,44 @@ import pandas as pd
 import numpy as np
 
 
+def test_ts_metal(w=None):
+    import tensorflow as tf
+
+    cifar = tf.keras.datasets.cifar100
+    (x_train, y_train), (x_test, y_test) = cifar.load_data()
+    model = tf.keras.applications.ResNet50(
+        include_top=True,
+        weights=w,
+        input_shape=(32, 32, 3),
+        classes=100,)
+
+    loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    model.compile(optimizer="adam", loss=loss_fn, metrics=["accuracy"])
+    model.fit(x_train, y_train, epochs=5, batch_size=64)
+
+def first_setip():
+    import os
+    import sys
+    import keras
+    import tensorflow as tf
+    if 'COLAB_GPU' in os.environ:
+        from google.colab import drive
+        drive.mount('/content/drive')
+        sys.path.insert(0,'/content/drive/MyDrive/Colab Notebooks/packages')
+        !pip install git+https://github.com/keras-team/keras-tuner.git
+        !pip install autokeras
+        tf.debugging.set_log_device_placement(True)
+        path_A='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/test_A榜.csv'
+        path_B='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/test_B榜.csv'
+        path_fill='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/filled_trian.csv'
+        path_raw_train='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/train.csv'
+    else:
+        path_fill = 'data/2022/filled_trian.csv'
+        path_raw_train='data/2022/train.csv'
+        path_A='data/2022/test_A榜.csv'
+        path_B = 'data/2022/test_B榜.csv'
+    return path_raw_train, path_fill, path_A,path_B
+
 def dynamic_string_col(df, param_string_col=None):
     """
      Get list of string columns that are used to build dynamic data. This is a helper function for : func : ` ~pyspark. sql. query. get_or_create_sql `
