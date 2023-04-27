@@ -22,28 +22,6 @@ def test_ts_metal(w=None):
     model.compile(optimizer="adam", loss=loss_fn, metrics=["accuracy"])
     model.fit(x_train, y_train, epochs=5, batch_size=64)
 
-def first_setip():
-    import os
-    import sys
-    import keras
-    import tensorflow as tf
-    if 'COLAB_GPU' in os.environ:
-        from google.colab import drive
-        drive.mount('/content/drive')
-        sys.path.insert(0,'/content/drive/MyDrive/Colab Notebooks/packages')
-        !pip install git+https://github.com/keras-team/keras-tuner.git
-        !pip install autokeras
-        tf.debugging.set_log_device_placement(True)
-        path_A='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/test_A榜.csv'
-        path_B='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/test_B榜.csv'
-        path_fill='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/filled_trian.csv'
-        path_raw_train='/content/drive/MyDrive/Colab Notebooks/data/CMB2022/train.csv'
-    else:
-        path_fill = 'data/2022/filled_trian.csv'
-        path_raw_train='data/2022/train.csv'
-        path_A='data/2022/test_A榜.csv'
-        path_B = 'data/2022/test_B榜.csv'
-    return path_raw_train, path_fill, path_A,path_B
 
 def dynamic_string_col(df, param_string_col=None):
     """
@@ -295,9 +273,15 @@ def IQR_filtering(df, U=0.88, L=0.22):
 
 
 if __name__ == '__main__':
+    import os
+    current_directory = os.path.dirname(__file__)
+    parent_directory = os.path.split(current_directory)[0] # Repeat as needed
+    
 
-    path_fill = '../data/2022/filled_trian.csv'
-    df_train = pd.read_csv('../data/2022/train.csv', index_col=0).head(500)
+    path_fill = 'data/2022/filled_trian.csv'
+    path_fill = os.path.join(parent_directory,path_fill)
+    path_train = os.path.join(parent_directory,'data/2022/train.csv')
+    df_train = pd.read_csv(path_train, index_col=0).head(500)
     df_train_filled = pd.read_csv(path_fill, index_col=0).head(500)
     # upper lower limits should there be at the first place
 
@@ -311,4 +295,4 @@ if __name__ == '__main__':
                             'CUR_YEAR_COUNTER_ENCASH_CNT',
                             'HLD_FGN_CCY_ACT_NBR']]
     # print(get_numerical_df(test))
-    print(test.sum())
+    test_ts_metal()
