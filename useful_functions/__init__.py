@@ -81,7 +81,7 @@ def step1_data_processing(df: pd.DataFrame, _string_col):
     _string_col = list(set(df.columns) & set(_string_col))
     # reconfirm the columns
     _df_numerical = df.drop(_string_col, axis=1).iloc[:, 2:].astype(float)
-    _df_numerical = _df_numerical - 2
+    _df_numerical = (_df_numerical - 2).astype(float)
     df_str = df.loc[:, _string_col]
     df_str.loc[:, 'SHH_BCK'] = df.loc[:, 'SHH_BCK'] - 2
     return pd.concat(objs=[df.iloc[:, :2], _df_numerical, df_str], axis=1), _string_col
