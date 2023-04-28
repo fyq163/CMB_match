@@ -1,0 +1,157 @@
+Index: develop_adversal_validation.ipynb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n \"cells\": [\n  {\n   \"attachments\": {},\n   \"cell_type\": \"markdown\",\n   \"metadata\": {},\n   \"source\": [\n    \"# Adversal validation\\n\",\n    \"1. Isna by axis=0\\\\\\n\",\n    \"\\\\\\n\",\n    \"First import the essentials\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": 8,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"import os\\n\",\n    \"import sys\\n\",\n    \"import keras\\n\",\n    \"import tensorflow as tf\\n\",\n    \"if 'COLAB_GPU' in os.environ:\\n\",\n    \"    from google.colab import drive\\n\",\n    \"    drive.mount('/content/drive')\\n\",\n    \"    sys.path.insert(0,'/content/drive/MyDrive/Colab Notebooks/packages')\\n\",\n    \"    !pip install git+https://github.com/keras-team/keras-tuner.git\\n\",\n    \"    !pip install autokeras\\n\",\n    \"    config = tf.ConfigProto( device_count = {'GPU': 1 , 'CPU': 2} )\\n\",\n    \"    sess = tf.Session(config=config)\\n\",\n    \"    keras.backend.set_session(sess)\\n\",\n    \"else:\\n\",\n    \"    path_fill = 'data/2022/filled_trian.csv'\\n\",\n    \"    path_raw_train='data/2022/train.csv'\\n\",\n    \"    path_A='data/2022/test_A榜.csv'\\n\",\n    \"    path_B='data/2022/test_B榜.csv'\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": 9,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"import pandas as pd\\n\",\n    \"import useful_functions as uf\\n\",\n    \"import autokeras as ak\\n\",\n    \"df_train = pd.read_csv(path_raw_train).head(500)\\n\",\n    \"df_train_filled = pd.read_csv(path_fill,index_col=0).head(500)\\n\",\n    \"df_test_A = pd.read_csv(path_A).head(500)\\n\",\n    \"df_test_B = pd.read_csv(path_B).head(500)\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": 10,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"import numpy as np\"\n   ]\n  },\n  {\n   \"attachments\": {},\n   \"cell_type\": \"markdown\",\n   \"metadata\": {},\n   \"source\": [\n    \"2. Drop too few columns, optional drop index for train data\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": 11,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"def drop_too_few_variable(dataframe: pd.DataFrame, threshold=0.75, whether_index = False):\\n\",\n    \"    total_rows = len(df_test_A.index)\\n\",\n    \"    mask_drop = (dataframe.count() / total_rows ) > threshold\\n\",\n    \"    dataframe = dataframe.loc[:, mask_drop]\\n\",\n    \"    if whether_index:\\n\",\n    \"        drop_index = dataframe.isna().sum(axis=1)>=len(dataframe.columns)*threshold\\n\",\n    \"        drop_index = [ind for ind in drop_index.index if drop_index[ind]==True]\\n\",\n    \"        dataframe.drop(index = drop_index)\\n\",\n    \"        return dataframe.drop(index = drop_index)\\n\",\n    \"    else:\\n\",\n    \"        return dataframe\\n\",\n    \"df_train = drop_too_few_variable(df_train,0.75,True)\\n\",\n    \"portfolio:list = [df_test_A,df_test_B]\\n\",\n    \"for i in range(len(portfolio)):\\n\",\n    \"    portfolio[i] = drop_too_few_variable(portfolio[i])\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": null,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": []\n  },\n  {\n   \"attachments\": {},\n   \"cell_type\": \"markdown\",\n   \"metadata\": {},\n   \"source\": [\n    \"3. step 1, minus 2\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": 12,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"s_col = uf.dynamic_string_col(df_train)\\n\",\n    \"df_train,string_col = uf.step1_data_processing(df_train,s_col)\"\n   ]\n  },\n  {\n   \"attachments\": {},\n   \"cell_type\": \"markdown\",\n   \"metadata\": {},\n   \"source\": [\n    \"4. \"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": 23,\n   \"metadata\": {},\n   \"outputs\": [\n    {\n     \"name\": \"stdout\",\n     \"output_type\": \"stream\",\n     \"text\": [\n      \"[]\\n\",\n      \"[]\\n\"\n     ]\n    }\n   ],\n   \"source\": [\n    \"def rand_nor_fill():\\n\",\n    \"    pass\"\n   ]\n  }\n ],\n \"metadata\": {\n  \"kernelspec\": {\n   \"display_name\": \"Python 3\",\n   \"language\": \"python\",\n   \"name\": \"python3\"\n  },\n  \"language_info\": {\n   \"codemirror_mode\": {\n    \"name\": \"ipython\",\n    \"version\": 3\n   },\n   \"file_extension\": \".py\",\n   \"mimetype\": \"text/x-python\",\n   \"name\": \"python\",\n   \"nbconvert_exporter\": \"python\",\n   \"pygments_lexer\": \"ipython3\",\n   \"version\": \"3.9.6\"\n  },\n  \"orig_nbformat\": 4\n },\n \"nbformat\": 4,\n \"nbformat_minor\": 2\n}\n
+===================================================================
+diff --git a/develop_adversal_validation.ipynb b/develop_adversal_validation.ipynb
+--- a/develop_adversal_validation.ipynb	
++++ b/develop_adversal_validation.ipynb	
+@@ -3,7 +3,11 @@
+   {
+    "attachments": {},
+    "cell_type": "markdown",
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%% md\n"
++    }
++   },
+    "source": [
+     "# Adversal validation\n",
+     "1. Isna by axis=0\\\n",
+@@ -14,7 +18,11 @@
+   {
+    "cell_type": "code",
+    "execution_count": 8,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [],
+    "source": [
+     "import os\n",
+@@ -40,7 +48,11 @@
+   {
+    "cell_type": "code",
+    "execution_count": 9,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [],
+    "source": [
+     "import pandas as pd\n",
+@@ -55,7 +67,11 @@
+   {
+    "cell_type": "code",
+    "execution_count": 10,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [],
+    "source": [
+     "import numpy as np"
+@@ -64,7 +80,11 @@
+   {
+    "attachments": {},
+    "cell_type": "markdown",
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%% md\n"
++    }
++   },
+    "source": [
+     "2. Drop too few columns, optional drop index for train data"
+    ]
+@@ -72,7 +92,11 @@
+   {
+    "cell_type": "code",
+    "execution_count": 11,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [],
+    "source": [
+     "def drop_too_few_variable(dataframe: pd.DataFrame, threshold=0.75, whether_index = False):\n",
+@@ -95,14 +119,22 @@
+   {
+    "cell_type": "code",
+    "execution_count": null,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [],
+    "source": []
+   },
+   {
+    "attachments": {},
+    "cell_type": "markdown",
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%% md\n"
++    }
++   },
+    "source": [
+     "3. step 1, minus 2"
+    ]
+@@ -110,7 +142,11 @@
+   {
+    "cell_type": "code",
+    "execution_count": 12,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [],
+    "source": [
+     "s_col = uf.dynamic_string_col(df_train)\n",
+@@ -120,7 +156,11 @@
+   {
+    "attachments": {},
+    "cell_type": "markdown",
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%% md\n"
++    }
++   },
+    "source": [
+     "4. "
+    ]
+@@ -128,7 +168,11 @@
+   {
+    "cell_type": "code",
+    "execution_count": 23,
+-   "metadata": {},
++   "metadata": {
++    "pycharm": {
++     "name": "#%%\n"
++    }
++   },
+    "outputs": [
+     {
+      "name": "stdout",
+@@ -167,4 +211,4 @@
+  },
+  "nbformat": 4,
+  "nbformat_minor": 2
+-}
++}
+\ No newline at end of file
