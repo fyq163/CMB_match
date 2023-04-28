@@ -105,8 +105,8 @@ def get_numerical_df(df: pd.DataFrame, _drop_col=None):
     _string_col = dynamic_string_col(df)
     _df_numerical = df.drop(_string_col, axis=1)
     if any(_df_numerical.columns.isin(['CUST_UID', 'LABEL'])):
-        return _df_numerical.drop(
-            _drop_col, axis=1).astype(float)
+# if these two in the columns, then drop them
+        return _df_numerical.drop(_drop_col, axis=1).astype(float)
     else:
         return _df_numerical
 
